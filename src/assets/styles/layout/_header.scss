@@ -1,0 +1,76 @@
+#Header {
+    --width: 100%;
+    --height: var(--header-height);
+    --color: var(--primary-bg);
+    --bg: var(--primary-color);
+    --padding-v: var(--padding-xs);
+    --padding-h: var(--padding-xs);
+    --font-size: var(--font-size-base);
+}
+
+#Header {
+    @include z-index($z-index-header);
+    position: fixed;
+    width: var(--width);
+    height: var(--height);
+    right: 0;
+    top: 0;
+    padding: var(--padding-v) var(--padding-h);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--color);
+    background-color: var(--bg);
+
+    transform: translate3d(0, var(--y-header), 10px);
+}
+
+#Header > nav {
+    display: flex;
+
+    a {
+        @include font-sans(1.2);
+        font-size: var(--font-size);
+        color: inherit;
+        margin: 0 1em;
+
+        &[aria-current="page"] {
+          pointer-events: none;
+        }
+    }
+}
+
+@media (max-width: $smartphone) {
+  #Header {
+    --font-size: #{(16px / 16px) * 1rem};
+
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+
+    > .title {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+    }
+
+    > .date {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+
+      align-self: flex-end;
+    }
+  }
+
+  #Header > nav {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    grid-template-columns: repeat(1, 1fr);
+
+    text-align: right;
+
+    a:not(:last-of-type) {
+      margin-bottom: .4em;
+    }
+  }
+}

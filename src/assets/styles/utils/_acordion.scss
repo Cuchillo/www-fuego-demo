@@ -1,0 +1,19 @@
+[data-acordion] {
+  --height-close: 0;
+  --height-open: 0;
+  --duration: .4s;
+  --ease: var(--ease-in-out-quad);
+  
+  overflow: hidden;
+  transition: height;
+  transition-timing-function: var(--ease);
+  transition-duration: var(--duration);
+
+  &[aria-expanded="true"] {
+    height: calc(var(--height-close) + var(--height-open));
+  }
+
+  &[aria-expanded="false"] {
+    height: var(--height-close);
+  }
+}

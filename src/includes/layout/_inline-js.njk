@@ -1,0 +1,11 @@
+<script type="text/javascript">
+  const CMS_COLORS = {
+    {% for palette in colors[renderData.language] %}
+      "{{ palette.name | split(' ','-') | lowercase }}": {
+        hex: {{ palette.bg | split('#','0x')}},
+        css: "{{ palette.bg }}",
+        str: "palette-{{ palette.name | split(' ','-') | lowercase }}"
+      },
+    {% endfor %}
+  }
+</script>

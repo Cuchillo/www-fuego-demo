@@ -1,0 +1,80 @@
+.block-default {
+    --font-size-h1: var(--font-size-xlarge);
+    --font-size-h2: var(--font-size-large);
+    --font-size-h3: var(--font-size-mid);
+    --font-size: var(--font-size-mid);
+    --color: var(--primary-color);
+
+    --max-width: #{(1500px / 16px) * 1rem};
+    --margin-v: 0;
+    --padding-v: var(--padding-l);
+    --padding-h: var(--padding-l);
+}
+
+.block-default {
+    color: var(--primary-color);
+
+    @include font-sans();
+    font-size: var(--font-size);
+    max-width: var(--max-width);
+    margin: var(--margin-v) auto;
+    padding: var(--padding-v) var(--padding-h);
+
+    h1 {
+        @include font-sans-bold(1);
+        font-size: var(--font-size-h1);
+        margin: .5em 0;
+    }
+
+    h2 {
+        @include font-sans-bold(1);
+        font-size: var(--font-size-h2);
+        margin: .5em 0;
+    }
+
+    h3 {
+        @include font-sans-bold(1);
+        font-size: var(--font-size-h3);
+        margin: .5em 0;
+    }
+
+    svg {
+        max-width: 100px;
+        height: auto;
+    }
+
+    p {
+        i {
+            @include font-sans-italic();
+        }
+
+        strong,
+        b {
+            @include font-sans-bold();
+        }
+        margin: .5em 0;
+    }
+
+    ul, ol {
+        margin: 2em 0;
+        padding-left: 4em;
+    }
+
+    a {
+        @include basic-a();
+        @include font-sans-bold();
+        text-decoration: underline;
+        color: inherit;
+    }
+}
+
+@media (max-width: $smartphone) {
+  .block-default {
+      --font-size-h1: var(--font-size-mid);
+      --font-size-h2: var(--font-size-mid);
+      --font-size-h3: var(--font-size-mid);
+      --font-size: var(--font-size-base);
+      --padding-v: var(--padding-l);
+      --padding-h: var(--padding-xs);
+  }
+}

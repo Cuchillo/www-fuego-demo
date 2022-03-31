@@ -1,0 +1,27 @@
+html{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    width: 100vw;
+    min-height: 100%;
+
+    color: var(--primary-color);
+    background: var(--primary-bg);
+
+    main {
+        width: 100%;
+    }
+
+    &:not(.__scroll-manual){
+        overflow: hidden;
+        height: 100vh;
+    }
+
+    &.__scroll-manual {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+}

@@ -1,0 +1,16 @@
+:root {
+  --y-header: 0;
+
+  --padding-xl: #{(120px / 16px) * 1rem};
+  --padding-l: #{(90px / 16px) * 1rem};
+  --padding-m: #{(60px / 16px) * 1rem};
+  --padding-s: #{(30px / 16px) * 1rem};
+  --padding-xs: #{(15px / 16px) * 1rem};
+  --padding-xxs: #{(8px / 16px) * 1rem};
+
+  --header-height:#{(77px / 16px) * 1rem};
+}
+
+@media (max-width: $smartphone) {
+  :root {}
+}

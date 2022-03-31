@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'FKGrotesk-Regular';
+  src:
+    url('FKGrotesk-Regular.woff2') format('woff2'),
+    url("FKGrotesk-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FKGrotesk-Medium';
+  src:
+    url('FKGrotesk-Medium.woff2') format('woff2'),
+    url("FKGrotesk-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+    font-family: "FKGrotesk-ThinItalic";
+    src:
+        url("FKGrotesk-ThinItalic.woff2") format("woff2"),
+        url("FKGrotesk-ThinItalic.woff") format("woff");
+    font-weight: 200;
+    font-style: italic;
+    font-display: swap;
+}

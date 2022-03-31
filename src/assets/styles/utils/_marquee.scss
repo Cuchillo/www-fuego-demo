@@ -1,0 +1,70 @@
+@keyframes --marquee-100 {
+  0% { transform: translateX(0) }
+  100% { transform: translateX(-100%) }
+}
+
+@keyframes --marquee100 {
+  0% { transform: translateX(-100%) }
+  100% { transform: translateX(0%) }
+}
+
+@keyframes --marquee-50 {
+  0% { transform: translate3D(0,0,0) }
+  100% { transform: translate3D(-50%,0,0) }
+}
+
+@keyframes --marquee50 {
+  0% { transform: translate3D(-50%,0,0) }
+  100% { transform: translate3D(0,0,0) }
+}
+
+@mixin basic-marquee() {
+  --space: .30em;
+  --animation: 8s;
+
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  width: auto;
+  padding-right: var(--space);
+
+  &:not(.--invert) {
+    animation: --marquee-100 var(--animation) infinite linear;
+  }
+
+  &.--invert {
+    animation: --marquee100 var(--animation) infinite linear;
+  }
+
+  .aux,
+  &[data-text]:after {
+    position: absolute;
+    top:0;
+    margin-left: var(--space);
+  }
+
+  &[data-text]:after {
+    content: attr(data-text);
+  }
+}
+
+@mixin marquee() {
+  --space: 4vw;
+  --animation: 8s;
+
+  font-size: 15vw;
+  white-space: nowrap;
+  width: auto;
+  animation: --marquee-50 var(--animation) infinite linear;
+  padding-left: var(--space);
+
+  &:after {
+    content: attr(data-text);
+    padding-left: var(--space);
+  }
+}
+
+
+.basic-marquee {
+  @include basic-marquee();
+}

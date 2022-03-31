@@ -1,0 +1,61 @@
+.video-block {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+.video-block__controls {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-block__button {
+  //@include button_circle_to_text_mod($transparent, $white, $white, $white, $transparent, $assertive, $white, $white, 5px);
+  width: 300px;
+}
+
+
+
+.aspect14-9 {
+  @include aspect-ratio(14,9);
+}
+
+.aspect16-9 {
+  @include aspect-ratio(16,9);
+}
+
+.aspectStandar {
+  position: relative;
+  width: 100%;
+  height: auto;
+  &:before{
+    display: block;
+    content: " ";
+    width: 100%;
+    padding-top: 56.25%;
+  }
+}
+
+.aspectStandar iframe, .aspectStandar object, .aspectStandar embed, .aspectStandar video,
+.aspect14-9 iframe, .aspect14-9 object, .aspect14-9 embed, .aspect14-9 video,
+.aspect16-9 iframe, .aspect16-9 object, .aspect16-9 embed, .aspect16-9 video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top:0px;
+  left: 0px;
+}
+
+.aspectAuto iframe, .aspectAuto object, .aspectAuto embed, .aspectAuto video {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+}

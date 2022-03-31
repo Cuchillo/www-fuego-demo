@@ -1,0 +1,34 @@
+#Scrollbar {
+    --height: #{(80px / 16px) * 1rem};
+
+    position: fixed;
+    @include z-index($z-index-scrollbar);
+
+    width: 100%;
+    height: var(--height);
+    bottom: 0;
+    left: 0;
+
+    .track,
+    .thumb {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .track {
+        background-color: var(--primary-bg);
+    }
+
+    .thumb {
+        transform-origin: 0 0;
+        background-color: var(--primary-color);
+        transform: scale(0,1);
+    }
+
+    @include isTouch() {
+        display: none;
+    }
+}

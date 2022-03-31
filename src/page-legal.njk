@@ -1,0 +1,22 @@
+---
+renderData:
+  h1: "{{ data.title.rendered | safe }}"
+  language: "{{ data.language }}"
+  title: "{{ data.title.rendered }}"
+  robots: "noindex,follow"
+pagination:
+  data: pages_legales
+  size: 1
+  alias: data
+permalink: "{{ data.link }}"
+layout: layout/default
+---
+
+{% set type = data.acf.options.page or 'default' %}
+{% set palette = data.acf.options.palette or 'primary' %}
+
+<article class='default' data-page='{{ type }}' data-palette='{{ palette }}'>
+  <section class="block-default" scroll-item>
+    {{data.content.rendered | safe}}
+  </section>
+</article>

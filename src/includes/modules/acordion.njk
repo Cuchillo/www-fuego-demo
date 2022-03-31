@@ -1,0 +1,8 @@
+{% macro block(button, content) %}
+
+<article data-acordion>
+    <button data-acordion-toogle>{{ button }}</button>
+    <div data-acordion-group>{{ content }}</div>
+</article>
+
+{% endmacro %}

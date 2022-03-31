@@ -1,0 +1,21 @@
+<header id="Header">
+  <nav>
+  {% for item in menu[renderData.language] %}
+    {% if item.items.length == 0 %}
+      {# LINK BASICO #}
+      {% set activeLink = 'aria-current=page' if page.url === item.url else "" %}
+      <a class="link-arrow" href="{{ item.url }}" {{ activeLink }}><span>{{ item.title }}</span></a>
+    {%  else %}
+      {# LINK CON SUBLINKS #}
+      {% for subitem in item.items %}
+        {% set activeLink = 'aria-current=page' if page.url === subitem.url else "" %}
+        <a class="link-arrow" href="{{ subitem.url }}" {{ activeLink }}><span>{{ subitem.title }}</span></a>
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+  </nav>
+</header>
+
+
+
+

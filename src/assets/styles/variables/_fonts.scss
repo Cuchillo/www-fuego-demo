@@ -1,0 +1,44 @@
+:root {
+    --font-sans: 'FKGrotesk-Regular', sans-serif;
+    --font-sans-bold: 'FKGrotesk-Medium', sans-serif;
+    --font-sans-italic: 'FKGrotesk-ThinItalic', sans-serif;
+
+    --font-size-xxlarge: #{(360px / 16px) * 1rem};
+    --font-size-large: #{(80px / 16px) * 1rem};
+    --font-size-xlarge: #{(130px / 16px) * 1rem};
+    --font-size-mid: #{(45px / 16px) * 1rem};
+    --font-size-base: #{(18px / 16px) * 1rem};
+    --font-size-h2: #{(80px / 16px) * 1rem};
+    --font-size-h3: #{(40px / 16px) * 1rem};
+    --font-size-small: #{(15px / 16px) * 1rem};
+    --font-size-xsmall: #{(12px / 16px) * 1rem};
+
+    --line-height-sans: 1.2;
+    --letter-spacing: -0.06em;
+
+    font-size: 1.1111vw;
+
+    @media (max-width: $smartphone) {
+        font-size: 16px;
+    }
+}
+
+@mixin font-sans($line-height:0) {
+    font-family: var(--font-sans);
+    font-weight: normal;
+    @if $line-height > 0 { line-height: $line-height  }
+    @else { line-height: var(--line-height-sans);  }
+}
+@mixin font-sans-bold($line-height:0) {
+  font-family: var(--font-sans-bold);
+  font-weight: 500;
+    @if $line-height > 0 { line-height: $line-height  }
+    @else { line-height: var(--line-height-sans);  }
+}
+@mixin font-sans-italic($line-height:0) {
+  font-family: var(--font-serif);
+  font-weight: 200;
+  font-style: italic;
+    @if $line-height > 0 { line-height: $line-height  }
+    @else { line-height: var(--line-height-sans);  }
+}

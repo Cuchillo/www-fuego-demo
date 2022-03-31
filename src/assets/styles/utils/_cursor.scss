@@ -1,0 +1,19 @@
+[data-cursor-follow],
+[data-cursor-follow-fixed] {
+  transform-origin: 50% 50%;
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: none;
+
+  .__target {
+    transform-origin: 50% 50%;
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+}
+
+.__cursor-default-hide {
+  cursor: none;
+
+  * {
+    cursor: none;
+  }
+}

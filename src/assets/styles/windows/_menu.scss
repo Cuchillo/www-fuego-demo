@@ -1,0 +1,76 @@
+#Sidemenu {
+  --bg: var(--cevi-pink);
+  --color: var(--black);
+  --font-size-p: #{rem(87px)};
+  --stroke-text: 1px;
+  --color-stroke-text: transparent;
+
+  &[aria-expanded='false'] {
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .reserva__top {
+    border: none;
+  }
+  .reserva__bottom {
+    border: none;
+  }
+}
+
+@media (max-width: $smartphone) {
+  #Sidemenu {
+    --font-size-p: 40px;
+    --stroke-text: 0;
+    --color-stroke-text: var(--color);
+  }
+}
+
+#Sidemenu {
+  position: fixed;
+  @include z-index($z-index-reserva);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+
+  color: var(--color);
+
+  > .bg {
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg);
+
+    transform: scale3d(1,0,1);
+    transform-origin: 0 0;
+  }
+}
+
+#Sidemenu nav ul {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: var(--padding-m) 0;
+
+  a,button {
+    @include basic-a();
+    display: block;
+    width: 100%;
+    font-size: 20vw;
+    text-transform: uppercase;
+
+    @include font-sans();
+    background: transparent;
+
+    text-align: center;
+
+    padding: 0;
+    color: var(--black);
+  }
+  button {
+    color: var(--color);
+  }
+}

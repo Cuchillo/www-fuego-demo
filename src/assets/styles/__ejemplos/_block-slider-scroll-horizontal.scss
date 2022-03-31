@@ -1,0 +1,26 @@
+.block-slider-scroll-horizontal {
+    --height: 800vh;
+    width: 100%;
+    height: var(--height);
+    overflow: hidden;
+}
+
+.block-slider-scroll-horizontal__sticky {
+    display: flex;
+    height: 100vh;
+    padding: 40vh 0;
+
+    > .item {
+        flex: 0 0 60vw;
+        width: 60vw;
+        height: 20vh;
+
+        &:nth-child(even) {
+            background: royalblue;
+        }
+
+        &:nth-child(odd) {
+            background: rebeccapurple;
+        }
+    }
+}

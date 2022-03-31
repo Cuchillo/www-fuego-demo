@@ -1,0 +1,138 @@
+
+// Cookies
+// -------------------------------
+
+
+///VARS
+
+.win-message,
+#Message {
+  --font-size:#{(24px / 16px) * 1rem};
+  --font-size-submit:#{(60px / 16px) * 1rem};
+
+  .palette-white &,
+  .palette-secondary &,
+  .palette-primary & {
+    --bg-color: var(--black);
+    --color: var(--primary-color);
+  }
+
+  .palette-black & {
+    --bg-color: var(--primary-color);
+    --color: var(--black);
+  }
+
+  &.__success {
+    --bg-color: var(--color-sucess);
+    --color: var(--black);
+  }
+
+  &.__error {
+    --bg-color: var(--color-error);
+    --color: var(--white);
+  }
+
+  &[aria-expanded='false'] {
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  color: var(--color);
+}
+
+.win-message,
+#Message {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  cursor: auto;
+
+  @include z-index($z-index-interface);
+
+  display: flex;
+  flex-wrap: wrap;
+  padding: rem(20px) rem(20px);
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: var(--bg-color);
+  color: var(--color);
+
+  .content {
+    flex: 1 0 50%;
+    display: block;
+    position: relative;
+  }
+
+  .controls {
+    flex: 1 0 160px;
+    min-width: 160px;
+    padding-left: 10px;
+    text-align: center;
+  }
+}
+
+//TEXTO
+.win-message p,
+#Message p {
+
+  font-size: var(--font-size);
+  margin: 0;
+  padding-bottom: 0;
+
+  b, strong {
+    font-weight: 400;
+  }
+
+  a {
+    @include basic-a();
+    text-decoration: underline;
+    color: inherit;
+  }
+}
+
+
+///BOTON
+.win-message .btn-ok,
+#Message .btn-ok {
+
+  font-size: var(--font-size-submit);
+  padding-top: calc(var(--padding-xs) * .90);
+  padding-bottom: calc(var(--padding-xs) * .90);
+  padding-left: var(--padding-xs);
+  padding-right: var(--padding-xs);
+}
+
+@media (max-width: $smartphone) {
+  #Message {
+    padding: var(--padding-s) var(--padding-xs);
+
+    .content {
+      width: 100%;
+      margin-bottom: var(--padding-xs);
+    }
+
+    .controls {
+      width: 100%;
+      min-width: 100%;
+      padding: 0;
+      display: flex;
+    }
+
+    p {
+      font-size: var(--font-size-base);
+      margin-bottom: 1em;
+    }
+
+    .btn-ok {
+      width: 100%;
+    }
+
+    /*.btn-nok {
+      margin: 0;
+      width: 35%;
+      padding: 15px 30px;
+    }*/
+  }
+}

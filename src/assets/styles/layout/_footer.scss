@@ -1,0 +1,22 @@
+#Footer {
+    --font-size: var(--font-size-small);
+    padding: var(--padding-s) var(--padding-xs) var(--padding-xl);
+}
+
+#Footer > nav {
+    display: flex;
+    align-items: flex-end;
+
+    a {
+        @include font-sans(1.2);
+        font-size: var(--font-size);
+        color: inherit;
+        margin: 0 1em;
+    }
+}
+
+@media (max-width: $smartphone) {
+  #Footer {
+      --font-size: rem(12px);
+  }
+}

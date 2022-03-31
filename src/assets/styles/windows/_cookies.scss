@@ -1,0 +1,130 @@
+#Cookies {
+  --color: var(--primary-bg);
+  --bg: var(--primary-color);
+  --padding-v: var(--padding-xs);
+  --padding-h: var(--padding-xs);
+  --font-size-big: var(--font-size-mid);
+  --font-size: var(--font-size-base);
+
+  &.__success {
+    --bg: var(--color-sucess);
+    --color: var(--black);
+  }
+
+  &.__error {
+    --bg: var(--color-error);
+    --color: var(--white);
+  }
+
+  &[aria-expanded='false'] {
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+
+#Cookies {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+
+  @include z-index($z-index-windows);
+
+  display: flex;
+  flex-wrap: wrap;
+  padding: var(--padding-v) var(--padding-h);
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: var(--bg);
+  color: var(--color);
+
+  .content {
+    flex: 1 0 50%;
+    display: block;
+    position: relative;
+  }
+
+  .controls {
+    flex: 1 0 160px;
+    min-width: 160px;
+    padding-left: 10px;
+    text-align: center;
+
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+//TEXTO
+#Cookies p {
+  @include font-sans();
+  font-size: var(--font-size);
+  margin: 0;
+  padding-bottom: 0;
+
+  b, strong {
+    @include font-sans-bold();
+  }
+
+  a {
+    @include basic-a();
+    text-decoration: underline;
+    color: inherit;
+  }
+}
+
+
+///BOTON
+#Cookies button {
+  @include basic-a();
+  @include font-sans-bold();
+  line-height: 1;
+  font-size: var(--font-size-big);
+  letter-spacing: var(--letter-spacing);
+  border: 1px solid var(--color);
+  background: transparent;
+
+  &:first-of-type {
+    border-right: 0;
+  }
+
+  &:hover {
+    background-color: var(--color);
+    color: var(--bg);
+  }
+}
+
+@media (max-width: $smartphone) {
+  #Cookies {
+    padding: var(--padding-s) var(--padding-xs);
+
+    .content {
+      width: 100%;
+      margin-bottom: var(--padding-xs);
+    }
+
+    .controls {
+      width: 100%;
+      min-width: 100%;
+      padding: 0;
+      display: flex;
+    }
+
+    p {
+      font-size: var(--font-size-base);
+      margin-bottom: 1em;
+    }
+
+    .btn-ok {
+      width: 100%;
+    }
+
+    /*.btn-nok {
+      margin: 0;
+      width: 35%;
+      padding: 15px 30px;
+    }*/
+  }
+}

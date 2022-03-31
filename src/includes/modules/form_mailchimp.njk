@@ -1,0 +1,12 @@
+{% macro block(url, code) %}
+
+{% if url %}
+    <form action="{{ url | safe }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+        <input type="email" value="" name="EMAIL" id="newsletter_email" placeholder='{{ texts[renderData.language].newsletter_placeholder }}' required>
+        <label for="mce-EMAIL"><span>{{ texts[renderData.language].newsletter_label }}</span></label>
+        <input class='hidden' type="text" name="{{ code }}" tabindex="-1" value="">
+        <button type='submit' aria-label='Send' name="subscribe" id="mc-embedded-subscribe">→</button>
+    </form>
+{% endif %}
+
+{% endmacro %}

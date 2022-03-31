@@ -1,0 +1,26 @@
+[scroll-item],
+[scroll-slider-item] {
+  will-change: transform;
+}
+
+[data-scroll-scale],
+[data-scroll-displace] {
+  overflow: hidden;
+  img, div {
+    transform-origin: center center;
+  }
+}
+
+.scroll-h {
+  position: absolute;
+  white-space: nowrap;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.__scroll-axis-x {
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+}

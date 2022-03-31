@@ -1,0 +1,63 @@
+//↗ → ← ↖
+
+@mixin link-arrow() {
+    --pos: 0;
+    --pos-hover: 1em;
+    --ease: var(--ease-out-quad);
+    --time: .4s;
+
+    @include basic-a();
+    position: relative;
+    overflow: hidden;
+    padding-right: var(--pos-hover);
+
+    &:before {
+        @include pseudo-element-absolute('→');
+        top:0;
+        left: calc(-1 * var(--pos-hover));
+        width: var(--pos-hover);
+        height: 100%;
+        transform: translateX(var(--pos));
+        transition: transform var(--time) var(--ease);
+    }
+
+    > span {
+        display: block;
+        transform: translateX(var(--pos));
+        transition: transform var(--time) var(--ease);
+    }
+
+    &:hover {
+     --pos: var(--pos-hover);
+    }
+
+    &.--active,
+    &.__link-active {
+        --pos: var(--pos-hover);
+        pointer-events: none;
+    }
+
+    /// TOUCH
+    @include isTouch() {
+        overflow: visible;
+
+        &:before {
+            opacity: 0;
+            transform: translateX(0);
+        }
+
+        > span {
+            transform: translateX(0);
+        }
+
+        &:hover {
+            &:before {
+            opacity: 1;
+            }
+        }
+    }
+}
+
+.link-arrow {
+    @include link-arrow();
+}

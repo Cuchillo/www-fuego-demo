@@ -1,0 +1,67 @@
+<head>
+  {% set name = renderData.name or _site.name %}
+  {% set title = renderData.title or _site.title or _site.name %}
+  {% set description = renderData.description or _site.description %}
+  {% set robots = renderData.robots or 'index,follow' %}
+  {% set type = renderData.type or _site.type %}
+  {% set url = renderData.url or _site.url %}
+  {% set image =  renderData.image or basics[renderData.language].facebook_image.sizes.facebook or _site.url + _site.image %}
+  {% set image_twitter =  renderData.image_twitter or basics[renderData.language].twitter_image.sizes.twitter or _site.url + _site.image_twitter %}
+  {% set google_analytics_code =  basics[renderData.language].google_analytics_code or _site.google_analytics_code %}
+
+  <meta charset="utf-8">
+  <title>{{ title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ description }}">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <meta name="robots" content="{{ robots }}" />
+
+  {# Canonical #}
+  <link name="canonical" href="{{ url }}" />
+
+  {# Open graph related #}
+  <meta property="og:title" content="{{ title }}" />
+  <meta property="og:type" content="{{ type }}" />
+  <meta property="og:url" content="{{ url }}" />
+  <meta property="og:image" content="{% social image %}" />
+  <meta property="og:site_name" content="{{ name }}" />
+  <meta property="og:description" content="{{ description }}" />
+
+  {# Twitter #}
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="{{ url }}" />
+  <meta property="twitter:title" content="{{ title }}" />
+  <meta property="twitter:description" content="{{ description }}" />
+  <meta property="twitter:image" content="{% social image_twitter %}" />
+
+  {# FAVICONS #}
+  {% include "layout/_favicons.njk" %}
+
+  {# CSS #}
+  <link id="__appCSS" rel="preload" href="{% webpack 'main.css' %}" as="style"/>
+
+  {# JS #}
+  <link id="__appJS" rel="preload" href="{% webpack 'main.js' %}" as="script"/>
+
+  {# FONTS #}
+  {% include "layout/_fonts.njk" %}
+
+  {# ANALITYCS #}
+  {% if google_analytics_code %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async data-src="https://www.googletagmanager.com/gtag/js?id={{ google_analytics_code }}" data-cookiecategory="analytics"></script>
+    <script type="text/plain" data-cookiecategory="analytics" data-code="{{ google_analytics_code }}">
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{ google_analytics_code }}');
+    </script>
+  {% endif %}
+
+  {# MINCSS #}
+  {% include "layout/_inline-css.njk" %}
+
+    {# MINJS #}
+  {% include "layout/_inline-js.njk" %}
+</head>

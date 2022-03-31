@@ -1,0 +1,16 @@
+---
+layout: layout/default
+---
+
+{% set __page = 'default' %}
+{% set __palette = 'primary' %}
+{% import "blocks/block_slider_scroll_horizontal.njk" as block_slider_scroll_horizontal with context %}
+
+<article class='default' data-page='{{ __page }}' data-palette='{{ __palette }}'>
+  {{ block_slider_scroll_horizontal.block([1,2,3,4,5,6,7,8,9]) }}
+  {{ block_slider_scroll_horizontal.block([1,2,3,4,5,6,7,8,9]) }}
+  {{ block_slider_scroll_horizontal.block([1,2,3,4,5,6,7,8,9]) }}
+  {{ block_slider_scroll_horizontal.block([1,2,3,4,5,6,7,8,9]) }}
+  {{ block_slider_scroll_horizontal.block([1,2,3,4,5,6,7,8,9]) }}
+  {{ block_slider_scroll_horizontal.block([1,2,3,4,5,6,7,8,9]) }}
+</article>

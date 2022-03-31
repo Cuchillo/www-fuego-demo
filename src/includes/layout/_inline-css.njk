@@ -1,0 +1,17 @@
+<style>
+  body{opacity:0;}
+  #Main{opacity:0}
+  .win-message[aria-expanded='false'] {
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  {% for palette in colors[renderData.language] %}
+    .palette-{{ palette.name | split(" ","-") | lowercase }} {
+      --primary-color: {{ palette.color }};
+      --primary-bg: {{ palette.bg }};
+      --secondary-color: {{ palette.secondary_color }};
+      --secondary-bg: {{ palette.secondary_bg }};
+    }
+  {% endfor %}
+</style>

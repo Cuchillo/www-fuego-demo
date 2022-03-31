@@ -1,0 +1,16 @@
+{% import "blocks/block_text.njk" as block_text with context %}
+{% import "blocks/block_image.njk" as block_image with context %}
+{% import "blocks/widget_landing.njk" as widget_landing with context %}
+
+{% set blocks = {
+        "block_text": block_text,
+        "block_image": block_image,
+        "widget_landing": widget_landing
+    }
+%}
+
+{% macro flexible(content) %}
+	{% for item in content %}
+        {{ blocks[item.acf_fc_layout].block(item) }}
+	{% endfor %}
+{% endmacro %}

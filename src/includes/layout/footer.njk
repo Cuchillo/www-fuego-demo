@@ -1,0 +1,33 @@
+<Footer id="Footer" scroll-item>
+  <nav>
+    {# RRSS #}
+    {% if contact[renderData.language].rrss.vimeo %}
+      <a class="link-arrow" href="{{ contact[renderData.language].rrss.vimeo }}" rel="nofollow" target='_blank'><span>Vimeo</span></a>
+    {% endif %}
+    {% if contact[renderData.language].rrss.youtube %}
+      <a class="link-arrow" href="{{ contact[renderData.language].rrss.youtube }}" rel="nofollow" target='_blank'><span>Youtube</span></a>
+    {% endif %}
+    {% if contact[renderData.language].rrss.instagram %}
+      <a class="link-arrow" href="{{ contact[renderData.language].rrss.instagram }}" rel="nofollow" target='_blank'><span>Instagram</span></a>
+    {% endif %}
+    {% if contact[renderData.language].rrss.linkedin %}
+      <a class="link-arrow" href="{{ contact[renderData.language].rrss.linkedin }}" rel="nofollow" target='_blank'><span>Linkedin</span></a>
+    {% endif %}
+
+    {# LEGALES #}
+    {% for item in all[renderData.language].legales %}
+      {% set activeClass = "__link-active" if page.url === "/" + item.url else "" %}
+      <a class="link-arrow {{ activeClass }}" href="{{ item.link }}" rel="nofollow"><span>{{ item.title.rendered }}</span></a>
+    {% endfor %}
+
+    {# LANGS #}
+    {% for lang in locales.langs %}
+      {% set activeClass = "is-active" if lang.code == locale else "" %}
+      <a class="link-arrow {{ activeClass }}" href="{{ lang.url }}" data-internal><span>{{ lang.label }}</span></a>
+    {% endfor %}
+  </nav>
+</Footer>
+
+
+
+

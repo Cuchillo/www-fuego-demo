@@ -1,0 +1,234 @@
+// SIZE
+// -------------------------------
+@mixin setSize($w,$h) {
+  width: $w;
+  height: $h;
+}
+@mixin setPosition($top:auto,$right:auto,$bottom:auto,$left:auto) {
+  top:$top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  width:100%;
+  display: block;
+  height: auto;
+  padding-top: ($height / $width) * 100%;
+}
+
+@mixin aspect-ratio-width($width, $height, $widthDiv) {
+  //position: relative;
+  //display: block;
+  width: $widthDiv;
+  height: auto;
+  padding-top: ($height / $width) * $widthDiv;
+}
+
+@mixin aspect-ratio-obj($width, $height) {
+
+  &:before{
+    display: block;
+    content: " ";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+}
+
+@mixin aspect-ratio-obj-width($width, $height,$widthDiv) {
+  position: relative;
+  width:100%;
+  display: block;
+  height: auto;
+
+  &:before{
+    display: block;
+    content: " ";
+    width: $widthDiv;
+    height: auto;
+    padding-top: ($height / $width) * $widthDiv;
+  }
+}
+
+@mixin aspect-ratio-obj-after($width, $height) {
+  position: relative;
+  width:100%;
+  display: block;
+  height: auto;
+
+  &:after{
+    display: block;
+    content: " ";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+}
+
+@mixin aspect-ratio-obj-width-after($width, $height,$widthDiv) {
+  position: relative;
+  width:100%;
+  display: block;
+  height: auto;
+
+  &:after{
+    display: block;
+    content: " ";
+    width: $widthDiv;
+    height: auto;
+    padding-top: ($height / $width) * $widthDiv;
+  }
+}
+
+@mixin aspect-ratio-img($width, $height) {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  padding-top: ($height / $width) * 100%;
+
+  > img, video {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width:100%;
+    height: auto;
+  }
+}
+
+@mixin aspect-ratio-img-width($width, $height, $widthDiv) {
+  position: relative;
+  display: block;
+  width: $widthDiv;
+  height: auto;
+  padding-top: ($height / $width) * $widthDiv;
+
+  > img, video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width:100%;
+    height: auto;
+  }
+}
+
+@mixin ellipsis() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.no-interaction {
+  pointer-events: none;
+}
+
+// Z-Index
+// -------------------------------
+@mixin z-index($level) {
+  z-index: $level;
+  transform        : translateZ($level + px) ;
+}
+
+
+// Opacity
+// -------------------------------
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+%visuallyhidden {
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip: rect(0, 0, 0, 0);
+  position: absolute;
+}
+
+.visually-hidden {
+  @extend %visuallyhidden;
+}
+
+@mixin pseudo-element-absolute($content:'') {
+  position: absolute;
+  content:$content;
+  display:block;
+}
+
+$browser-context: 16;
+@function em($pixels, $context: $browser-context) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1em;
+}
+@function rem($pixels, $context: $browser-context) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+
+@mixin isTouch() {
+  //@media (hover: none) and (pointer: coarse) {
+  @media (hover: none) {
+    @content;
+  }
+}
+
+@mixin isCursor() {
+  //@media (hover: hover) and (pointer: fine) {
+  @media (hover: hover) {
+    @content;
+  }
+}

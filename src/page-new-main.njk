@@ -1,0 +1,54 @@
+---
+renderData:
+  language: "{{ pages_with_pagination.es.news.language }}"
+  title: "{{ pages_with_pagination.es.news.acf.seo.title }}"
+  description: "{{ pages_with_pagination.es.news.acf.seo.description }}"
+  image: "{{ pages_with_pagination.es.news.acf.seo.image.sizes.facebook }}"
+  image_twitter: "{{ pages_with_pagination.es.news.acf.seo.image.sizes.twitter }}"
+pagination:
+  data: all.es.news
+  size: 2
+layout: layout/default
+title:
+htmlClass: html
+bodyClass: body
+permalink: "{{ pages_with_pagination.es.news.link }}/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}"
+---
+
+{% set data = pages_with_pagination.es.news %}
+{% set type = data.acf.options.page or 'default' %}
+{% set palette = data.acf.options.palette or 'primary' %}
+
+<article data-page='{{ type }}' data-palette='{{ palette }}'>
+  <section class="block-default" scroll-item>
+    <ol>
+      {%- for item in pagination.items %}
+        <li>
+          <a href="{{ item.link }}">
+          {{ item.title.rendered }}</li>
+        </a>
+      {% endfor -%}
+    </ol>
+
+    <nav>
+      <ol>
+        <li>
+          {% if pagination.href.previous %}
+            <a href="{{ pagination.href.previous }}">Previous</a>
+          {% else %}Previous{% endif %}
+        </li>
+        {%- for pageEntry in pagination.pages %}
+          <li>
+            <a href="{{ pagination.hrefs[ loop.index0 ] }}" {% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page" {% endif %}>Page
+              {{ loop.index }}</a>
+          </li>
+        {%- endfor %}
+        <li>
+          {% if pagination.href.next %}
+            <a href="{{ pagination.href.next }}">Next</a>
+          {% else %}Next{% endif %}
+        </li>
+      </ol>
+    </nav>
+  </section>
+</article>

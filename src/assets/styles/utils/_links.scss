@@ -1,0 +1,40 @@
+/* DEFAULT */
+a > .content {
+  position: relative;
+}
+
+@mixin accessible() {
+  & {
+    .__accessible & {
+      @content;
+    }
+  }
+}
+
+@mixin basic-a() {
+  outline: 0;
+  text-decoration: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  @include accessible() {
+    &:focus {
+        outline: 2px dashed !important;
+    }
+  }
+}
+
+%no-effect-link {
+  outline: 0;
+  text-decoration: none;
+  &:hover {  text-decoration: none;  }
+}
+
+@mixin no-effect-link() {
+  @extend %no-effect-link;
+}
+
+a > *,
+button > * {
+  pointer-events: none;
+}

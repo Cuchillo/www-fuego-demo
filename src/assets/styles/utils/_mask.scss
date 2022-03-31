@@ -1,0 +1,24 @@
+[data-has-mask] {
+  --y: 0px;
+  --x: 0px;
+  --mask-inside-top: calc(var(--mask-top) - var(--y));
+  --mask-inside-right: calc(var(--mask-right) - var(--x));
+  --mask-inside-bottom: calc(var(--mask-bottom) - var(--y));
+  --mask-inside-left: calc(var(--mask-left) - var(--x));
+
+  [data-mask-child] {
+    --inside-y: 0px;
+    --inside-x: 0px;
+
+    --mask-inside-top2: calc(var(--mask-inside-top) - var(--inside-y));
+    --mask-inside-right2: calc(var(--mask-inside-right) - var(--inside-x));
+    --mask-inside-bottom2: calc(var(--mask-inside-bottom) - var(--inside-y));
+    --mask-inside-left2: calc(var(--mask-inside-left) - var(--inside-x));
+
+    clip-path: polygon(
+                    var(--mask-inside-left2) var(--mask-inside-top2),
+                    var(--mask-inside-right2)  var(--mask-inside-top2),
+                    var(--mask-inside-right2)  var(--mask-inside-bottom2),
+                    var(--mask-inside-left2)  var(--mask-inside-bottom2))
+  }
+}

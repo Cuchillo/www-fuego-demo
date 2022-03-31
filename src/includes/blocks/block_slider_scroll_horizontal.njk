@@ -1,0 +1,11 @@
+{% macro block(data) %}
+
+<div class="block-slider-scroll-horizontal" scroll-item data-class="slider-scroll-horizontal">
+  <div class="block-slider-scroll-horizontal__sticky __holder" data-scroll-sticky>
+    {% for item in data %}
+      <div class="item" scroll-slider-item></div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endmacro %}

@@ -1,0 +1,24 @@
+---
+renderData:
+  language: "{{ data.language }}"
+  title: "{{ data.acf.seo.title }}"
+  description: "{{ data.acf.seo.description }}"
+  image: "{{ data.acf.seo.image.sizes.facebook }}"
+  image_twitter: "{{ data.acf.seo.image.sizes.twitter }}"
+   url: "{{ _site.url }}{{ data.link }}"
+pagination:
+  data: pages
+  size: 1
+  alias: data
+permalink: "{{ data.link }}"
+layout: layout/default
+---
+
+{% set __page = data.acf.options.page or 'default' %}
+{% set __palette = data.acf.options.palette or 'primary' %}
+{% import "flexible.njk" as FlexibleContent with context %}
+{% import "modules/acordion.njk" as acordion with context %}
+
+<article class='default' data-page='{{ __page }}' data-palette='{{ __palette }}'>
+  {{ FlexibleContent.flexible(data.acf.blocks_custom) }}
+</article>
