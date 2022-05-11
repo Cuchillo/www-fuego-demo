@@ -247,6 +247,8 @@ export default class Cursor {
           this._follower.changeTo(item, "follower", target, __type === CursorTypes.COLOR);
           this._icon = this.getIcon(item);
           this._text.text = this.getText(item);
+        } else {
+          
         }
 
         switch(__type) {
@@ -360,6 +362,8 @@ export default class Cursor {
   }
 
   static loop() {
+    console.log();
+
     if(this._isEnabledMove) {
       if (!this._isFollowFixed) {
         this._follower.x = Maths.precission(this._follower._xabs + (Interaction.positions.mouse.x - this._follower._xabs) * this._follower._easing);

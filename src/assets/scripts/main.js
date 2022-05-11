@@ -31,8 +31,9 @@ import Loading from './layout/Loading';
 import BG from './_app/cuchillo/layout/Background';
 import Cookies from './windows/Cookies';
 import Header from './layout/Header';
+import Cursor from './_app/cuchillo/cursor/Cursor';
 
-import { ScrollItem__SliderScrollHorizontal } from './scroll/ScrollItem__SliderScrollHorizontal';
+import { ScrollItem__Line1 } from './scroll/ScrollItem__Line1';
 
 export default class Main {
 
@@ -61,6 +62,14 @@ export default class Main {
     // LoaderController.update = progress => {  };
     LoaderController.init();
 
+    Cursor.init(document.body, {
+      color: "#000000",
+      fontStyle: {
+          size: 16,
+          fontFamily: "SweetSansProMedium"
+      }
+  }, { size: 0, alpha: 0 }, { alpha: 0, size: 0 });
+
     this.doCuchilloInfo();
     this.setWorker();
 
@@ -72,49 +81,50 @@ export default class Main {
     }
   }
 
-  static setup () {
+  static setup() {
     this.setupEvents();
     // INIT PAGE
     ControllerPage.init(Wrap.mainholder);
-  }
+}
 
-  static setupEvents () {
+static setupEvents() {
     EventDispatcher.addEventListener(Page.ON_SHOW, () => {
-      //Cursor.start();
-      Loading.stop();
+        Cursor.start();
+        Loading.stop();
     });
     EventDispatcher.addEventListener(Page.ON_HIDE, () => {
-      //Cursor.hide();
+        Cursor.hide();
     });
     EventDispatcher.addEventListener(Page.ON_HIDE_END, () => {
-      Loading.start();
+        Loading.start();
     });
 
     EventDispatcher.addEventListener(Win.ON_HIDE, () => { Scroll.setEnabled(true); });
     EventDispatcher.addEventListener(Win.ON_SHOW, () => { Scroll.setEnabled(false); });
-  }
+}
 
-  static resize () {
+static resize() {
     Header.resize();
     InterfaceCanvas.resize();
     ControllerPage.resize();
-  }
+}
 
-  static loop () {
-    // ControllerPage.loop();
+static loop() {
+    ControllerPage.loop();
     Header.loop();
     InterfaceCanvas.loop();
+    if(!isTouch) Cursor.loop();
 
     if (Scroll.isScrolling) Scroll.loop();
-  }
+}
 
-  static loopDebug () {
+static loopDebug() {
     Statics.begin();
     this.loop();
     Statics.end();
-  }
+}
 
-  static doCuchilloInfo () {
+static doCuchilloInfo() {
     console.log('%cby Cuchillo', 'background: #000; color: #bada55; padding:25px 100px;');
     console.log('⟶ http://cuchillo.studio');
     console.log('⟶ https://www.instagram.com/_cuchillo');
@@ -132,19 +142,19 @@ export default class Main {
     console.log('');
     console.log('Favicon Generator');
     console.log('⟶ https://realfavicongenerator.net');
-  }
+}
 
-  static setWorker () {
+static setWorker() {
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker
-        .register('/service-worker.js')
-        .then(function () { });
+        navigator.serviceWorker
+            .register('/service-worker.js')
+            .then(function() {});
     }
-  }
+}
 }
 
 if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-  Main.init();
+Main.init();
 } else {
-  document.addEventListener('DOMContentLoaded', Main.init);
+document.addEventListener('DOMContentLoaded', Main.init);
 }

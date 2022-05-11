@@ -26,21 +26,34 @@ export default class Cursor__Drag extends Cursor__Item{
     this._isOut = false;
     this.enabled = true;
 
+    gsap.killTweensOf(this);
+    gsap.killTweensOf(this.iconL);
+    gsap.killTweensOf(this.iconR);
+    gsap.killTweensOf(this._arrow);
+    gsap.killTweensOf(this._follower);    
+
     if(!this.isDragging) {
       gsap.to(this.iconL, .2, {size:this._sizeabs, ease: Power4.easeOut});
       gsap.to(this.iconR, .2, {size:this._sizeabs, ease: Power4.easeOut});
       gsap.to(this, .8, {posL: -20, posR: 20, ease: Power4.easeOut});
-      gsap.to(this._arrow, .4, {size: 10, ease: Power4.easeOut});
+      gsap.to(this._arrow, .4, {alpha:1, size: 10, ease: Power4.easeOut});
       gsap.to(this._follower, .8, {size: 80, ease: Power4.easeOut});
     }
   }
 
   hide() {
     this._isOut = true;
+
+    gsap.killTweensOf(this);
+    gsap.killTweensOf(this.iconL);
+    gsap.killTweensOf(this.iconR);
+    gsap.killTweensOf(this._arrow);
+    gsap.killTweensOf(this._follower);
+
     if(!this.isDragging) {
       gsap.to(this.iconL, .2, {size:0, ease: Power3.easeOut});
       gsap.to(this.iconR, .2, {size:0, ease: Power3.easeOut});
-      gsap.to(this._arrow, .4, {size: this._arrow.default.size, ease: Power3.easeOut});
+      gsap.to(this._arrow, .4, {alpha:this._arrow.default.alpha, size: this._arrow.default.size, ease: Power3.easeOut});
       gsap.to(this._follower, .3, {size: this._follower.default.size, ease: Power3.easeOut});
       gsap.to(this, .4, {
         posL: 0, posR: 0, ease: Power3.easeOut, onComplete: () => {
@@ -56,7 +69,7 @@ export default class Cursor__Drag extends Cursor__Item{
     gsap.to(this.iconL, .2, {size:this._sizeabs, ease: Power4.easeOut});
     gsap.to(this.iconR, .2, {size:this._sizeabs, ease: Power4.easeOut});
     gsap.to(this,.8, {posL:-14, posR:14, ease:Power4.easeOut});
-    gsap.to(this._arrow, .4, {size: 10, ease: Power4.easeOut});
+    gsap.to(this._arrow, .4, {alpha:1, size: 10, ease: Power4.easeOut});
     gsap.to(this._follower,.8, {size:100, ease:Power4.easeOut});
   }
 

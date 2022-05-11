@@ -6,6 +6,7 @@ import Wrap from '../layout/Wrap';
 import { isMobile } from '../_app/cuchillo/core/Basics';
 import { Videos } from '../_app/cuchillo/components/Videos';
 import { Acordions } from '../_app/cuchillo/components/Acordions';
+import ShffleLinks from '../_app/cuchillo/components/ShffleLinks';
 
 export default class Default extends Page {
 

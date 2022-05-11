@@ -1,24 +1,11 @@
 ---
 renderData:
-  language: "{{ data.language }}"
-  title: "{{ data.acf.seo.title }}"
-  description: "{{ data.acf.seo.description }}"
-  image: "{{ data.acf.seo.image.sizes.facebook }}"
-  image_twitter: "{{ data.acf.seo.image.sizes.twitter }}"
-pagination:
-  data: pages
-  size: 1
-  alias: data
-permalink: "{{ data.link }}"
+  language: "es"
+
 layout: layout/default
 ---
 
-{% set __page = data.acf.options.page or 'default' %}
-{% set __palette = 'secondary' %}
-{% import "flexible.njk" as FlexibleContent with context %}
-{% import "modules/acordion.njk" as acordion with context %}
-
-<article class='default' data-page='{{ __page }}' data-palette='secondary'>
+<article class='default' data-page='default' data-palette='secondary'>
   
 <section class="block-links" scroll-item data-class="line1">
     <div class="link-holder"><div class="line"><span>Work.</span></div><a href="#" data-text-to="Visita nuestros trabajos"></a></div>
@@ -44,18 +31,6 @@ layout: layout/default
     <div class="line"><span>digital para crear marcas que lideren el</span></div>
     <div class="line"><span>nuevo paradigma.</span></div>
 </section>
-<section class="block-p" scroll-item data-class="line1">
-    <div class="line"><span>Hola, Somos Fuego Camina Conmigo.</span></div>
-    <div class="line"><span>Sacamos el maximo partido del ecosistema</span></div>
-    <div class="line"><span>digital para crear marcas que lideren el</span></div>
-    <div class="line"><span>nuevo paradigma.</span></div>
-</section>
-<section class="block-p" scroll-item data-class="line1">
-    <div class="line"><span>Hola, Somos Fuego Camina Conmigo.</span></div>
-    <div class="line"><span>Sacamos el maximo partido del ecosistema</span></div>
-    <div class="line"><span>digital para crear marcas que lideren el</span></div>
-    <div class="line"><span>nuevo paradigma.</span></div>
-</section>
 <section class="block-links" scroll-item data-class="line1">
     <div class="line"><span>Work.</span></div>
 </section>
@@ -440,4 +415,5 @@ layout: layout/default
     <div class="line"><span>digital para crear marcas que lideren el</span></div>
     <div class="line"><span>nuevo paradigma.</span></div>
 </section>
+
 </article>

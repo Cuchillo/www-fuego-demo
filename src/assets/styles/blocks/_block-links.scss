@@ -1,0 +1,58 @@
+.block-p,
+.block-links {
+    --heightLine: 1em;
+    @include font-sans(1);
+    margin: 0;
+    padding: 0;
+
+    .line {
+        position: relative;
+        display: inline-block;
+        height: var(--heightLine);
+        margin-top: -.1em;
+        padding-right: .01em;
+        overflow: hidden;
+
+        > span {
+            display: block;
+            transform: translate3d(0, 100%, 0);
+        }
+    }
+
+    .link-holder {
+        display: inline-block;
+        position: relative;
+        height: var(--heightLine);
+        margin-top: -.1em;
+        a {
+            position: absolute;
+            left: 100%;
+            top: calc(100% - 5em);
+            line-height: 1.2;
+            font-size: var(--font-size-small);
+            color: blue;
+            letter-spacing: 0;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+    }
+
+    .lineLink {
+        position: relative;
+        overflow: hidden;
+        > span {
+            display: block;
+            transform: translate3d(0, 100%, 0);
+        }
+    }
+}
+
+.block-p { 
+    --heightLine: 1.1em;
+    font-size: 5.6vw;
+
+    > .line:first-child {
+        padding-left: 1.31em;
+    }
+}
+.block-links { font-size: 20vw; }

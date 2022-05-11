@@ -26,7 +26,7 @@ export default class Cursor__Image extends Cursor__Item{
   }
 
   show() {
-    this.size = this._width * .5;
+    this.size = this._width * 1;
     gsap.to(this,{duration:.5, size:this._width, ease:Power4.easeOut});
   }
 

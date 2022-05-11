@@ -58,7 +58,7 @@ export default class Cursor__Dot {
     this._ctx = __ctx;
 
     this.default = {
-      size: __default.size || this.default.size,
+      size: __default.size !== undefined? __default.size : this.default.size,
       stroke: __default.stroke || this.default.stroke,
       color: Cursor.hexToRgb(__default.color) || null,
       alpha: __default.alpha || this.default.alpha,
@@ -98,6 +98,8 @@ export default class Cursor__Dot {
       strokeAlpha:  __item.getAttribute("data-" + __type + "-stroke-alpha") !== null? Number(__item.getAttribute("data-" + __type + "-stroke-alpha")) : this.default.strokeAlpha,
     };
 
+    gsap.killTweensOf(this);
+
     if(__isOnlyColor) {
       gsap.to(this,options.time, {
         colorR:options.color.r,
@@ -123,6 +125,8 @@ export default class Cursor__Dot {
     const options = this.default;
     const defaultColor = this.default.color? this.default.color : Cursor.colorRGB;
 
+    gsap.killTweensOf(this);
+
     gsap.to(this, {
       size:options.size,
       colorR:defaultColor.r,
@@ -140,6 +144,8 @@ export default class Cursor__Dot {
     const options = this.default;
     const defaultColor = this.default.color? this.default.color : Cursor.colorRGB;
 
+    gsap.killTweensOf(this);
+
     gsap.to(this,{
       colorR:defaultColor.r,
       colorG:defaultColor.g,
@@ -152,7 +158,18 @@ export default class Cursor__Dot {
   draw() {
     this._ctx.globalAlpha = 1;
     this._ctx.beginPath();
-    this._ctx.arc(this._x, this._y, this._radius, 0, this._pi2, false);
+
+    //DOT
+    //this._ctx.arc(this._x, this._y, this._radius, 0, this._pi2, false);
+    //RECT
+    //this._ctx.rect(this._x - this._radius, this._y - this._radius, this._radius * 2, this._radius * 2);
+    //DIAMOND
+    this._ctx.moveTo(this._x - this._radius, this._y);
+    this._ctx.lineTo(this._x, this._y - this._radius);
+    this._ctx.lineTo(this._x + this._radius, this._y);
+    this._ctx.lineTo(this._x, this._y + this._radius);
+    this._ctx.lineTo(this._x - this._radius, this._y);
+
     this._ctx.fillStyle = Cursor.rgbToCSS({r:this.colorR, g:this.colorG, b:this.colorB}, this.alpha);
     this._ctx.fill();//
 
